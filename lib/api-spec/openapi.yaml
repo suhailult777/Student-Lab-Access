@@ -3,13 +3,19 @@ info:
   # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: CyberLab Portal API specification
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: labs
+    description: Lab management
+  - name: bookings
+    description: Lab bookings
+  - name: payments
+    description: Payment operations
 paths:
   /healthz:
     get:
@@ -24,7 +30,217 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /labs:
+    get:
+      operationId: getLabs
+      tags: [labs]
+      summary: List all available labs
+      responses:
+        "200":
+          description: List of labs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Lab"
+
+  /labs/{id}:
+    get:
+      operationId: getLab
+      tags: [labs]
+      summary: Get a single lab
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Lab details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lab"
+        "404":
+          description: Lab not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /bookings:
+    get:
+      operationId: getMyBookings
+      tags: [bookings]
+      summary: Get all bookings for the current user
+      security:
+        - clerkAuth: []
+      responses:
+        "200":
+          description: List of bookings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Booking"
+    post:
+      operationId: createBooking
+      tags: [bookings]
+      summary: Create a new booking
+      security:
+        - clerkAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateBookingBody"
+      responses:
+        "201":
+          description: Booking created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Booking"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /bookings/{id}:
+    get:
+      operationId: getBooking
+      tags: [bookings]
+      summary: Get a single booking
+      security:
+        - clerkAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Booking details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Booking"
+        "404":
+          description: Booking not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /bookings/{id}/provision:
+    post:
+      operationId: provisionLab
+      tags: [bookings]
+      summary: Provision the lab for a paid booking
+      security:
+        - clerkAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Lab provisioned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProvisionResult"
+        "400":
+          description: Not paid or already provisioned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "404":
+          description: Booking not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /payments/initiate:
+    post:
+      operationId: initiatePayment
+      tags: [payments]
+      summary: Initiate Easebuzz payment for a booking
+      security:
+        - clerkAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InitiatePaymentBody"
+      responses:
+        "200":
+          description: Payment initiation data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaymentInitiateResponse"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /payments/callback:
+    post:
+      operationId: paymentCallback
+      tags: [payments]
+      summary: Easebuzz payment callback
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        "200":
+          description: Callback processed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaymentCallbackResponse"
+
+  /dashboard/summary:
+    get:
+      operationId: getDashboardSummary
+      tags: [bookings]
+      summary: Get dashboard stats for the current user
+      security:
+        - clerkAuth: []
+      responses:
+        "200":
+          description: Dashboard summary
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashboardSummary"
+
 components:
+  securitySchemes:
+    clerkAuth:
+      type: http
+      scheme: bearer
+
   schemas:
     HealthStatus:
       type: object
@@ -34,3 +250,197 @@ components:
       required:
         - status
 
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+
+    Lab:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        difficulty:
+          type: string
+        pricePerHour:
+          type: number
+        maxHours:
+          type: integer
+        tools:
+          type: array
+          items:
+            type: string
+        imageUrl:
+          type: ["string", "null"]
+        isActive:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - description
+        - category
+        - difficulty
+        - pricePerHour
+        - maxHours
+        - tools
+        - imageUrl
+        - isActive
+        - createdAt
+
+    Booking:
+      type: object
+      properties:
+        id:
+          type: integer
+        userId:
+          type: string
+        labId:
+          type: integer
+        hours:
+          type: integer
+        totalAmount:
+          type: number
+        status:
+          type: string
+          enum: [pending, paid, provisioned, expired, failed]
+        paymentTxnId:
+          type: ["string", "null"]
+        labAccessUrl:
+          type: ["string", "null"]
+        labCredentials:
+          type: ["string", "null"]
+        provisionedAt:
+          type: ["string", "null"]
+          format: date-time
+        expiresAt:
+          type: ["string", "null"]
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        lab:
+          $ref: "#/components/schemas/Lab"
+      required:
+        - id
+        - userId
+        - labId
+        - hours
+        - totalAmount
+        - status
+        - paymentTxnId
+        - labAccessUrl
+        - labCredentials
+        - provisionedAt
+        - expiresAt
+        - createdAt
+        - lab
+
+    CreateBookingBody:
+      type: object
+      properties:
+        labId:
+          type: integer
+        hours:
+          type: integer
+          minimum: 1
+          maximum: 24
+      required:
+        - labId
+        - hours
+
+    ProvisionResult:
+      type: object
+      properties:
+        success:
+          type: boolean
+        accessUrl:
+          type: string
+        credentials:
+          type: string
+        expiresAt:
+          type: string
+          format: date-time
+      required:
+        - success
+        - accessUrl
+        - credentials
+        - expiresAt
+
+    InitiatePaymentBody:
+      type: object
+      properties:
+        bookingId:
+          type: integer
+      required:
+        - bookingId
+
+    PaymentInitiateResponse:
+      type: object
+      properties:
+        accessKey:
+          type: string
+        paymentUrl:
+          type: string
+        txnId:
+          type: string
+        amount:
+          type: number
+        productInfo:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+      required:
+        - accessKey
+        - paymentUrl
+        - txnId
+        - amount
+        - productInfo
+        - name
+        - email
+
+    PaymentCallbackResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        bookingId:
+          type: ["integer", "null"]
+      required:
+        - status
+        - bookingId
+
+    DashboardSummary:
+      type: object
+      properties:
+        totalBookings:
+          type: integer
+        activeBookings:
+          type: integer
+        totalSpent:
+          type: number
+        completedLabs:
+          type: integer
+        recentBookings:
+          type: array
+          items:
+            $ref: "#/components/schemas/Booking"
+      required:
+        - totalBookings
+        - activeBookings
+        - totalSpent
+        - completedLabs
+        - recentBookings

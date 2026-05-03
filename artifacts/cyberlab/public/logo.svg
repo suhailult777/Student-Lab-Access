@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Dark background -->
+  <rect width="200" height="200" fill="#06060b" />
+  
+  <!-- Outer grid glow -->
+  <path d="M100 20 L180 100 L100 180 L20 100 Z" fill="none" stroke="rgba(0,255,255,0.2)" stroke-width="2" />
+  <path d="M100 40 L160 100 L100 160 L40 100 Z" fill="none" stroke="rgba(0,255,255,0.4)" stroke-width="2" />
+  <path d="M100 60 L140 100 L100 140 L60 100 Z" fill="none" stroke="rgba(0,255,255,0.6)" stroke-width="3" />
+  
+  <!-- Inner eye/shield shape -->
+  <polygon points="100,75 125,100 100,125 75,100" fill="#00ffff" />
+  <circle cx="100" cy="100" r="10" fill="#06060b" />
+  
+  <!-- Crosshairs -->
+  <line x1="20" y1="100" x2="60" y2="100" stroke="#00ffff" stroke-width="4" stroke-linecap="round" />
+  <line x1="140" y1="100" x2="180" y2="100" stroke="#00ffff" stroke-width="4" stroke-linecap="round" />
+  <line x1="100" y1="20" x2="100" y2="60" stroke="#00ffff" stroke-width="4" stroke-linecap="round" />
+  <line x1="100" y1="140" x2="100" y2="180" stroke="#00ffff" stroke-width="4" stroke-linecap="round" />
+</svg>
