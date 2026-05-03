@@ -1,16 +1,20 @@
 import { Layout } from "@/components/layout";
 import { useGetLab, useCreateBooking, getGetLabQueryKey } from "@workspace/api-client-react";
 import { Link, useLocation } from "wouter";
-import { ChevronRight, Clock, Database, Terminal, Shield, Info, ArrowLeft, Loader2, DollarSign } from "lucide-react";
+import { ChevronRight, Clock, Database, Terminal, Shield, Info, ArrowLeft, Loader2, BookOpen, Layers } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@clerk/react";
 import { useToast } from "@/hooks/use-toast";
+import { LabModules } from "@/components/modules/LabModules";
+
+type Tab = "overview" | "training";
 
 export function LabDetail({ params }: { params: { id: string } }) {
   const labId = parseInt(params.id);
   const { data: lab, isLoading } = useGetLab(labId, { query: { enabled: !!labId, queryKey: getGetLabQueryKey(labId) } });
   const [hours, setHours] = useState(1);
+  const [tab, setTab] = useState<Tab>("overview");
   const [, setLocation] = useLocation();
   const { user } = useUser();
   const { toast } = useToast();
@@ -22,18 +26,13 @@ export function LabDetail({ params }: { params: { id: string } }) {
       setLocation("/sign-in");
       return;
     }
-    
     createBooking.mutate({ data: { labId, hours } }, {
-      onSuccess: (booking) => {
-        setLocation(`/payment/${booking.id}`);
-      },
-      onError: (error) => {
-        toast({
-          title: "Booking Failed",
-          description: error.error || "Failed to create booking",
-          variant: "destructive"
-        });
-      }
+      onSuccess: (booking) => setLocation(`/payment/${booking.id}`),
+      onError: (error) => toast({
+        title: "Booking Failed",
+        description: error.error || "Failed to create booking",
+        variant: "destructive",
+      }),
     });
   };
 
@@ -75,111 +74,160 @@ export function LabDetail({ params }: { params: { id: string } }) {
         <Link href="/labs" className="inline-flex items-center gap-2 text-sm font-mono text-muted-foreground hover:text-primary uppercase tracking-wider transition-colors">
           <ArrowLeft className="w-4 h-4" /> Back to Catalog
         </Link>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="col-span-2 space-y-8">
-            <div className="border border-border bg-card p-8 relative overflow-hidden group">
-              <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-                <Database className="w-48 h-48" />
-              </div>
-              
-              <div className="relative z-10 space-y-4">
-                <div className="flex items-center gap-3">
-                  <span className="px-3 py-1 bg-primary/10 text-primary border border-primary/30 text-xs font-mono uppercase tracking-wider">
-                    {lab.category}
-                  </span>
-                  <span className={`px-3 py-1 border text-xs font-mono uppercase tracking-wider ${
-                    lab.difficulty === 'beginner' ? 'border-green-500/30 text-green-500 bg-green-500/5' :
-                    lab.difficulty === 'intermediate' ? 'border-yellow-500/30 text-yellow-500 bg-yellow-500/5' :
-                    'border-red-500/30 text-red-500 bg-red-500/5'
-                  }`}>
-                    {lab.difficulty}
-                  </span>
-                </div>
-                
-                <h1 className="text-3xl md:text-4xl font-bold leading-tight">{lab.name}</h1>
-                <p className="text-lg text-muted-foreground leading-relaxed">{lab.description}</p>
-              </div>
-            </div>
 
-            <div className="border border-border bg-card p-8 space-y-6">
-              <h2 className="text-xl font-mono font-bold uppercase flex items-center gap-3">
-                <Terminal className="w-5 h-5 text-primary" /> Pre-installed Tools
-              </h2>
-              <div className="flex flex-wrap gap-3">
-                {lab.tools.map((tool, i) => (
-                  <span key={i} className="px-4 py-2 bg-muted border border-border font-mono text-sm">
-                    {tool}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="border border-border bg-card p-8 space-y-6">
-              <h2 className="text-xl font-mono font-bold uppercase flex items-center gap-3">
-                <Info className="w-5 h-5 text-primary" /> Environment Details
-              </h2>
-              <ul className="space-y-4 font-mono text-sm">
-                <li className="flex items-center gap-3 text-muted-foreground">
-                  <Shield className="w-4 h-4 text-primary" /> Fully isolated network segment
-                </li>
-                <li className="flex items-center gap-3 text-muted-foreground">
-                  <Terminal className="w-4 h-4 text-primary" /> Web-based VNC access included
-                </li>
-                <li className="flex items-center gap-3 text-muted-foreground">
-                  <Database className="w-4 h-4 text-primary" /> Root/Administrator privileges on all targets
-                </li>
-              </ul>
-            </div>
+        {/* Lab header */}
+        <div className="border border-border bg-card p-8 relative overflow-hidden group">
+          <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+            <Database className="w-48 h-48" />
           </div>
-
-          <div className="space-y-6">
-            <div className="border border-border bg-card p-6 space-y-6 sticky top-24">
-              <h2 className="text-xl font-mono font-bold uppercase border-b border-border pb-4">Provisioning Setup</h2>
-              
-              <div className="space-y-4">
-                <div className="flex justify-between items-center text-sm font-mono uppercase tracking-wider text-muted-foreground">
-                  <span>Rate</span>
-                  <span className="text-foreground">${lab.pricePerHour.toFixed(2)} / hr</span>
-                </div>
-                
-                <div className="space-y-2">
-                  <label className="text-xs font-mono uppercase tracking-wider text-muted-foreground">Duration (Hours)</label>
-                  <div className="flex items-center gap-4">
-                    <input 
-                      type="range" 
-                      min="1" 
-                      max={lab.maxHours} 
-                      value={hours} 
-                      onChange={(e) => setHours(parseInt(e.target.value))}
-                      className="flex-1 accent-primary"
-                    />
-                    <div className="font-mono font-bold w-12 text-center bg-muted py-1 border border-border">{hours}</div>
-                  </div>
-                  <div className="text-[10px] text-muted-foreground font-mono uppercase text-right">Max: {lab.maxHours} hours</div>
-                </div>
-
-                <div className="border-t border-border pt-4 flex justify-between items-center">
-                  <span className="text-sm font-mono uppercase tracking-wider text-muted-foreground">Total</span>
-                  <span className="text-2xl font-mono font-bold text-primary">${(lab.pricePerHour * hours).toFixed(2)}</span>
-                </div>
-
-                <Button 
-                  className="w-full font-mono font-bold tracking-widest uppercase rounded-none py-6 shadow-[0_0_15px_rgba(0,255,255,0.2)]" 
-                  size="lg"
-                  onClick={handleBook}
-                  disabled={createBooking.isPending}
-                >
-                  {createBooking.isPending ? (
-                    <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> INITIALIZING...</>
-                  ) : (
-                    <><Terminal className="mr-2 h-5 w-5" /> {user ? "Deploy Environment" : "Authenticate to Deploy"}</>
-                  )}
-                </Button>
-              </div>
+          <div className="relative z-10 space-y-4">
+            <div className="flex items-center gap-3 flex-wrap">
+              <span className="px-3 py-1 bg-primary/10 text-primary border border-primary/30 text-xs font-mono uppercase tracking-wider">
+                {lab.category}
+              </span>
+              <span className={`px-3 py-1 border text-xs font-mono uppercase tracking-wider ${
+                lab.difficulty === "beginner" ? "border-green-500/30 text-green-500 bg-green-500/5" :
+                lab.difficulty === "intermediate" ? "border-yellow-500/30 text-yellow-500 bg-yellow-500/5" :
+                "border-red-500/30 text-red-500 bg-red-500/5"
+              }`}>
+                {lab.difficulty}
+              </span>
+              <span className="px-3 py-1 bg-purple-500/10 text-purple-400 border border-purple-500/30 text-xs font-mono uppercase tracking-wider">
+                4 Training Modules
+              </span>
             </div>
+            <h1 className="text-3xl md:text-4xl font-bold leading-tight">{lab.name}</h1>
+            <p className="text-lg text-muted-foreground leading-relaxed">{lab.description}</p>
           </div>
         </div>
+
+        {/* Tab navigation */}
+        <div className="flex border-b border-border">
+          <button
+            onClick={() => setTab("overview")}
+            className={`flex items-center gap-2 px-6 py-3 font-mono text-sm uppercase tracking-wider border-b-2 transition-colors ${
+              tab === "overview"
+                ? "border-primary text-primary"
+                : "border-transparent text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            <Info className="w-4 h-4" /> Overview
+          </button>
+          <button
+            onClick={() => setTab("training")}
+            className={`flex items-center gap-2 px-6 py-3 font-mono text-sm uppercase tracking-wider border-b-2 transition-colors ${
+              tab === "training"
+                ? "border-primary text-primary"
+                : "border-transparent text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            <BookOpen className="w-4 h-4" /> Training Modules
+            <span className="text-[10px] bg-primary/20 text-primary border border-primary/30 px-1.5 py-0.5 rounded-none">4</span>
+          </button>
+        </div>
+
+        {/* Tab content */}
+        {tab === "overview" ? (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="col-span-2 space-y-8">
+              <div className="border border-border bg-card p-8 space-y-6">
+                <h2 className="text-xl font-mono font-bold uppercase flex items-center gap-3">
+                  <Terminal className="w-5 h-5 text-primary" /> Pre-installed Tools
+                </h2>
+                <div className="flex flex-wrap gap-3">
+                  {lab.tools.map((tool, i) => (
+                    <span key={i} className="px-4 py-2 bg-muted border border-border font-mono text-sm">
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="border border-border bg-card p-8 space-y-6">
+                <h2 className="text-xl font-mono font-bold uppercase flex items-center gap-3">
+                  <Info className="w-5 h-5 text-primary" /> Environment Details
+                </h2>
+                <ul className="space-y-4 font-mono text-sm">
+                  <li className="flex items-center gap-3 text-muted-foreground">
+                    <Shield className="w-4 h-4 text-primary" /> Fully isolated network segment
+                  </li>
+                  <li className="flex items-center gap-3 text-muted-foreground">
+                    <Terminal className="w-4 h-4 text-primary" /> Web-based VNC access included
+                  </li>
+                  <li className="flex items-center gap-3 text-muted-foreground">
+                    <Database className="w-4 h-4 text-primary" /> Root/Administrator privileges on all targets
+                  </li>
+                  <li className="flex items-center gap-3 text-muted-foreground">
+                    <Layers className="w-4 h-4 text-primary" /> 4 interactive training modules included
+                  </li>
+                </ul>
+              </div>
+
+              {/* Training preview */}
+              <div className="border border-purple-500/30 bg-purple-500/5 p-6 space-y-4">
+                <h2 className="text-lg font-mono font-bold uppercase flex items-center gap-3 text-purple-400">
+                  <BookOpen className="w-5 h-5" /> Training Modules Preview
+                </h2>
+                <p className="text-muted-foreground font-mono text-sm">
+                  This lab includes 4 hands-on interactive modules: quizzes, simulated terminal challenges, CTF-style flag captures, and code vulnerability analysis.
+                </p>
+                <button
+                  onClick={() => setTab("training")}
+                  className="flex items-center gap-2 text-purple-400 font-mono text-sm uppercase hover:text-purple-300 transition-colors"
+                >
+                  Start Training <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="border border-border bg-card p-6 space-y-6 sticky top-24">
+                <h2 className="text-xl font-mono font-bold uppercase border-b border-border pb-4">Provisioning Setup</h2>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center text-sm font-mono uppercase tracking-wider text-muted-foreground">
+                    <span>Rate</span>
+                    <span className="text-foreground">${lab.pricePerHour.toFixed(2)} / hr</span>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-mono uppercase tracking-wider text-muted-foreground">Duration (Hours)</label>
+                    <div className="flex items-center gap-4">
+                      <input
+                        type="range"
+                        min="1"
+                        max={lab.maxHours}
+                        value={hours}
+                        onChange={(e) => setHours(parseInt(e.target.value))}
+                        className="flex-1 accent-primary"
+                      />
+                      <div className="font-mono font-bold w-12 text-center bg-muted py-1 border border-border">{hours}</div>
+                    </div>
+                    <div className="text-[10px] text-muted-foreground font-mono uppercase text-right">Max: {lab.maxHours} hours</div>
+                  </div>
+                  <div className="border-t border-border pt-4 flex justify-between items-center">
+                    <span className="text-sm font-mono uppercase tracking-wider text-muted-foreground">Total</span>
+                    <span className="text-2xl font-mono font-bold text-primary">${(lab.pricePerHour * hours).toFixed(2)}</span>
+                  </div>
+                  <Button
+                    className="w-full font-mono font-bold tracking-widest uppercase rounded-none py-6 shadow-[0_0_15px_rgba(0,255,255,0.2)]"
+                    size="lg"
+                    onClick={handleBook}
+                    disabled={createBooking.isPending}
+                  >
+                    {createBooking.isPending ? (
+                      <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> INITIALIZING...</>
+                    ) : (
+                      <><Terminal className="mr-2 h-5 w-5" /> {user ? "Deploy Environment" : "Authenticate to Deploy"}</>
+                    )}
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="max-w-5xl">
+            <LabModules labId={labId} />
+          </div>
+        )}
       </div>
     </Layout>
   );
