@@ -102,6 +102,43 @@ router.post("/payments/initiate", requireAuth, async (req, res): Promise<void> =
   );
 });
 
+router.post("/payments/mock-complete", requireAuth, async (req, res): Promise<void> => {
+  const userId = (req as any).userId as string;
+  const { bookingId } = req.body;
+
+  if (!bookingId || isNaN(Number(bookingId))) {
+    res.status(400).json({ error: "Invalid bookingId" });
+    return;
+  }
+
+  const [row] = await db
+    .select()
+    .from(bookingsTable)
+    .leftJoin(labsTable, eq(bookingsTable.labId, labsTable.id))
+    .where(and(eq(bookingsTable.id, Number(bookingId)), eq(bookingsTable.userId, userId)));
+
+  if (!row) {
+    res.status(404).json({ error: "Booking not found" });
+    return;
+  }
+
+  if (row.bookings.status !== "pending") {
+    res.status(400).json({ error: "Booking is not in pending status" });
+    return;
+  }
+
+  const txnId = `CL_${row.bookings.id}_${Date.now()}`;
+
+  await db
+    .update(bookingsTable)
+    .set({ status: "paid", paymentTxnId: txnId })
+    .where(eq(bookingsTable.id, row.bookings.id));
+
+  req.log.info({ bookingId: row.bookings.id, txnId }, "Mock payment completed, booking marked as paid");
+
+  res.json({ status: "success", bookingId: row.bookings.id, txnId });
+});
+
 router.post("/payments/callback", async (req, res): Promise<void> => {
   const { txnid, status, hash } = req.body;
 
