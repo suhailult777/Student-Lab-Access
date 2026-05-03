@@ -1,6 +1,7 @@
 import { Router, type IRouter } from "express";
-import { db, bookingsTable, labsTable } from "@workspace/db";
+import { db, bookingsTable, labsTable, labSessionsTable } from "@workspace/db";
 import { eq, and, desc } from "drizzle-orm";
+import crypto from "crypto";
 import {
   GetMyBookingsResponse,
   CreateBookingBody,
@@ -13,6 +14,14 @@ import {
 import { requireAuth } from "../middlewares/requireAuth";
 
 const router: IRouter = Router();
+
+function getPublicOrigin(): string {
+  const domain = process.env.REPLIT_DOMAINS
+    ? process.env.REPLIT_DOMAINS.split(",")[0]
+    : process.env.REPLIT_DEV_DOMAIN ?? "";
+  if (domain) return `https://${domain}`;
+  return process.env.APP_URL ?? "http://localhost:80";
+}
 
 function formatBookingWithLab(booking: any, lab: any) {
   return {
@@ -121,15 +130,29 @@ router.post("/bookings/:id/provision", requireAuth, async (req, res): Promise<vo
   const [lab] = await db.select().from(labsTable).where(eq(labsTable.id, booking.labId));
 
   const expiresAt = new Date(Date.now() + booking.hours * 60 * 60 * 1000);
-  const accessUrl = `https://lab-provision-placeholder.example.com/labs/${booking.id}`;
-  const credentials = JSON.stringify({
-    username: `student_${userId.slice(-8)}`,
-    password: `CL@b${booking.id}${Math.random().toString(36).slice(2, 8)}`,
-    vpnConfig: `https://vpn.cyberlab.example.com/config/${booking.id}.ovpn`,
+
+  // Generate a cryptographically secure session token
+  const sessionToken = crypto.randomBytes(32).toString("hex");
+
+  // Create a live lab session record in the database
+  await db.insert(labSessionsTable).values({
+    bookingId: booking.id,
+    userId,
+    sessionToken,
+    status: "pending",
   });
 
-  // In production, this would call the actual lab provisioning REST API
-  req.log.info({ bookingId: booking.id }, "Provisioning lab (placeholder)");
+  const origin = getPublicOrigin();
+  const accessUrl = `${origin}/terminal/${sessionToken}`;
+
+  const credentials = JSON.stringify({
+    username: `student_${userId.slice(-8)}`,
+    sessionToken,
+    labIp: "10.13.37." + ((booking.id % 200) + 10),
+    labName: lab?.name ?? "CyberLab Environment",
+  });
+
+  req.log.info({ bookingId: booking.id, sessionToken: sessionToken.slice(0, 8) + "..." }, "Lab session created");
 
   const [updated] = await db
     .update(bookingsTable)

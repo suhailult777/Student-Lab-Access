@@ -14,6 +14,7 @@ import { LabDetail } from "@/pages/lab-detail";
 import { Bookings } from "@/pages/bookings";
 import { BookingDetail } from "@/pages/booking-detail";
 import { Payment } from "@/pages/payment";
+import { TerminalPage } from "@/pages/terminal";
 import { SignInPage } from "@/pages/sign-in";
 import { SignUpPage } from "@/pages/sign-up";
 import NotFound from "@/pages/not-found";
@@ -161,6 +162,7 @@ function Router() {
       <ProtectedRoute path="/bookings" component={Bookings} />
       <ProtectedRoute path="/bookings/:id" component={BookingDetail} />
       <ProtectedRoute path="/payment/:bookingId" component={Payment} />
+      <ProtectedRoute path="/terminal/:token" component={TerminalPage} />
       
       <Route component={NotFound} />
     </Switch>

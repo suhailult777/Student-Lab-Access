@@ -4,7 +4,7 @@ import { Link, useLocation, useSearch } from "wouter";
 import {
   ArrowLeft, Clock, CreditCard, Database, Terminal, ShieldAlert,
   CheckCircle2, PlaySquare, Loader2, Copy, Check, XCircle, AlertTriangle,
-  Wifi, Lock, ChevronRight, User, KeyRound, FileKey, Monitor,
+  Wifi, Lock, ChevronRight, User, KeyRound, FileKey, Monitor, TerminalSquare,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
@@ -102,7 +102,11 @@ function DemoTerminal() {
 
 function isPlaceholderUrl(url: string | null | undefined) {
   if (!url) return true;
-  return url.includes("placeholder") || url.includes("example.com") || url.includes("localhost");
+  return url.includes("placeholder") || url.includes("example.com");
+}
+
+function isTerminalUrl(url: string | null | undefined) {
+  return !!url && url.includes("/terminal/");
 }
 
 function parseCredentials(raw: string | null | undefined): Record<string, string> | null {
@@ -113,6 +117,15 @@ function parseCredentials(raw: string | null | undefined): Record<string, string
     return null;
   }
 }
+
+const CRED_META: Record<string, { label: string; icon: React.ElementType; sensitive?: boolean }> = {
+  username:     { label: "Username",      icon: User },
+  password:     { label: "Password",      icon: KeyRound, sensitive: true },
+  sessionToken: { label: "Session Token", icon: FileKey,  sensitive: true },
+  labIp:        { label: "Lab IP",        icon: Wifi },
+  labName:      { label: "Environment",   icon: Database },
+  vpnConfig:    { label: "VPN Config",    icon: FileKey },
+};
 
 export function BookingDetail({ params }: { params: { id: string } }) {
   const bookingId = parseInt(params.id);
@@ -154,7 +167,7 @@ export function BookingDetail({ params }: { params: { id: string } }) {
         toast({ title: "Environment Provisioned", description: "Your lab is ready to access." });
       },
       onError: (error) => {
-        toast({ title: "Provisioning Failed", description: error.error || "Failed to provision lab", variant: "destructive" });
+        toast({ title: "Provisioning Failed", description: (error as any)?.error ?? "Failed to provision lab", variant: "destructive" });
       },
     });
   };
@@ -274,15 +287,24 @@ export function BookingDetail({ params }: { params: { id: string } }) {
                 {/* Parsed credentials */}
                 {creds ? (
                   <div className="space-y-4 relative z-10">
-                    {creds.username && <CopyField label="Username" value={creds.username} icon={User} />}
-                    {creds.password && <CopyField label="Password" value={creds.password} icon={KeyRound} />}
-                    {creds.vpnConfig && <CopyField label="VPN Config URL" value={creds.vpnConfig} icon={FileKey} />}
+                    {Object.entries(creds).map(([key, value]) => {
+                      const meta = CRED_META[key];
+                      if (!meta || !value) return null;
+                      return (
+                        <CopyField
+                          key={key}
+                          label={meta.label}
+                          value={value}
+                          icon={meta.icon as any}
+                        />
+                      );
+                    })}
                   </div>
                 ) : booking.labCredentials ? (
                   <CopyField label="Credentials" value={booking.labCredentials} icon={KeyRound} />
                 ) : null}
 
-                {/* VNC / Terminal access */}
+                {/* Terminal / VNC access */}
                 {!showVnc ? (
                   <div className="relative z-10">
                     {isDemo ? (
@@ -292,6 +314,15 @@ export function BookingDetail({ params }: { params: { id: string } }) {
                       >
                         <Monitor className="mr-2 h-5 w-5" /> LAUNCH DEMO TERMINAL
                       </Button>
+                    ) : isTerminalUrl(booking.labAccessUrl) ? (
+                      <a
+                        href={booking.labAccessUrl!}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-5 font-mono font-bold tracking-widest uppercase transition-all shadow-[0_0_30px_rgba(0,255,255,0.25)] w-full"
+                      >
+                        <TerminalSquare className="w-5 h-5" /> OPEN SECURE TERMINAL
+                      </a>
                     ) : (
                       <a
                         href={booking.labAccessUrl!}

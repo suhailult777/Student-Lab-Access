@@ -38,7 +38,7 @@ router.get("/modules/:id", async (req, res): Promise<void> => {
 
 router.get("/labs/:labId/progress", requireAuth, async (req, res): Promise<void> => {
   const userId = (req as any).userId as string;
-  const labId = parseInt(req.params.labId, 10);
+  const labId = parseInt(req.params.labId as string, 10);
   if (isNaN(labId)) { res.status(400).json({ error: "Invalid labId" }); return; }
 
   const mods = await db
@@ -59,7 +59,7 @@ router.get("/labs/:labId/progress", requireAuth, async (req, res): Promise<void>
 
 router.post("/modules/:id/submit", requireAuth, async (req, res): Promise<void> => {
   const userId = (req as any).userId as string;
-  const id = parseInt(req.params.id, 10);
+  const id = parseInt(req.params.id as string, 10);
   if (isNaN(id)) { res.status(400).json({ error: "Invalid id" }); return; }
 
   const [mod] = await db.select().from(modulesTable).where(eq(modulesTable.id, id));

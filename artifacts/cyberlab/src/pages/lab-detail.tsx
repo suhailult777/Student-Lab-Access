@@ -30,7 +30,7 @@ export function LabDetail({ params }: { params: { id: string } }) {
       onSuccess: (booking) => setLocation(`/payment/${booking.id}`),
       onError: (error) => toast({
         title: "Booking Failed",
-        description: error.error || "Failed to create booking",
+        description: (error as any)?.error ?? "Failed to create booking",
         variant: "destructive",
       }),
     });
