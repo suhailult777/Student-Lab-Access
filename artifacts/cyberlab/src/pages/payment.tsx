@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth, useUser } from "@clerk/react";
 import { useQueryClient } from "@tanstack/react-query";
+import { getClerkApiToken } from "@/lib/clerk-token";
 
 function formatCard(v: string) {
   return v.replace(/\D/g, "").slice(0, 16).replace(/(.{4})/g, "$1 ").trim();
@@ -112,7 +113,7 @@ export function Payment({ params }: { params: { bookingId: string } }) {
   const handleInitiate = async () => {
     setInitiating(true);
     try {
-      const token = await getToken();
+      const token = await getClerkApiToken(getToken, user?.id ?? null);
       const res = await fetch("/api/payments/initiate", {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
@@ -151,7 +152,7 @@ export function Payment({ params }: { params: { bookingId: string } }) {
     }
     setPaying(true);
     try {
-      const token = await getToken();
+      const token = await getClerkApiToken(getToken, user?.id ?? null);
       const res = await fetch("/api/payments/mock-complete", {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },

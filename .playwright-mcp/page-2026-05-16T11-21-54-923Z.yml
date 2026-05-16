@@ -1,0 +1,117 @@
+- generic [ref=e2]:
+  - generic [ref=e138]:
+    - banner [ref=e139]:
+      - generic [ref=e140]:
+        - link "CyberLab_Portal" [ref=e141] [cursor=pointer]:
+          - /url: /
+          - img [ref=e143]
+          - generic [ref=e145]: CyberLab_Portal
+        - generic [ref=e146]:
+          - link "Authenticate" [ref=e147] [cursor=pointer]:
+            - /url: /sign-in
+          - link "Initialize" [ref=e148] [cursor=pointer]:
+            - /url: /sign-up
+    - main [ref=e149]:
+      - generic [ref=e151]:
+        - generic [ref=e152]:
+          - generic [ref=e153]: Environment Ready
+          - heading "PROVISION YOUR TARGET VECTOR" [level=1] [ref=e155]:
+            - text: PROVISION YOUR
+            - text: TARGET VECTOR
+          - paragraph [ref=e156]: On-demand, isolated cybersecurity laboratory environments for penetration testing, forensic analysis, and security research.
+          - generic [ref=e157]:
+            - link "Deploy Lab" [ref=e158] [cursor=pointer]:
+              - /url: /sign-up
+              - text: Deploy Lab
+              - img [ref=e159]
+            - link "Access Terminal" [ref=e161] [cursor=pointer]:
+              - /url: /sign-in
+        - generic [ref=e162]:
+          - generic [ref=e163]:
+            - img [ref=e164]
+            - heading "Fully Isolated" [level=3] [ref=e166]
+            - paragraph [ref=e167]: Dedicated network segments for safe detonation and exploitation.
+          - generic [ref=e168]:
+            - img [ref=e169]
+            - heading "Pre-configured" [level=3] [ref=e171]
+            - paragraph [ref=e172]: Kali Linux, Commando VM, and vulnerable targets ready to hack.
+          - generic [ref=e173]:
+            - img [ref=e174]
+            - heading "Hourly Billing" [level=3] [ref=e177]
+            - paragraph [ref=e178]: Pay only for the execution time you need. No commitments.
+        - generic [ref=e179]:
+          - generic [ref=e180]:
+            - heading "Available Environments" [level=2] [ref=e181]:
+              - img [ref=e182]
+              - text: Available Environments
+            - link "View Catalog →" [ref=e184] [cursor=pointer]:
+              - /url: /labs
+          - generic [ref=e185]:
+            - generic [ref=e186]:
+              - img [ref=e188]
+              - generic [ref=e190]:
+                - generic [ref=e191]:
+                  - generic [ref=e192]:
+                    - heading "Web Application Exploitation Lab" [level=3] [ref=e193]
+                    - generic [ref=e194]: Web Security
+                  - generic [ref=e195]: beginner
+                - paragraph [ref=e196]: Practice recon, authentication bypass, and input validation attacks against a purpose-built vulnerable web stack.
+              - generic [ref=e197]:
+                - generic [ref=e198]: ₹299.00/hr
+                - link "Details" [ref=e199] [cursor=pointer]:
+                  - /url: /labs/1
+                  - text: Details
+                  - img [ref=e200]
+            - generic [ref=e202]:
+              - img [ref=e204]
+              - generic [ref=e206]:
+                - generic [ref=e207]:
+                  - generic [ref=e208]:
+                    - heading "Network Traffic Analysis Lab" [level=3] [ref=e209]
+                    - generic [ref=e210]: Network Forensics
+                  - generic [ref=e211]: intermediate
+                - paragraph [ref=e212]: Investigate packet captures, suspicious flows, and credential leakage across a segmented network intrusion scenario.
+              - generic [ref=e213]:
+                - generic [ref=e214]: ₹349.00/hr
+                - link "Details" [ref=e215] [cursor=pointer]:
+                  - /url: /labs/2
+                  - text: Details
+                  - img [ref=e216]
+            - generic [ref=e218]:
+              - img [ref=e220]
+              - generic [ref=e222]:
+                - generic [ref=e223]:
+                  - generic [ref=e224]:
+                    - heading "Malware Analysis Sandbox" [level=3] [ref=e225]
+                    - generic [ref=e226]: Malware Research
+                  - generic [ref=e227]: advanced
+                - paragraph [ref=e228]: Dissect suspicious binaries, extract indicators, and study evasive behavior inside an isolated reverse-engineering environment.
+              - generic [ref=e229]:
+                - generic [ref=e230]: ₹499.00/hr
+                - link "Details" [ref=e231] [cursor=pointer]:
+                  - /url: /labs/3
+                  - text: Details
+                  - img [ref=e232]
+            - generic [ref=e234]:
+              - img [ref=e236]
+              - generic [ref=e238]:
+                - generic [ref=e239]:
+                  - generic [ref=e240]:
+                    - heading "Linux Privilege Escalation Lab" [level=3] [ref=e241]
+                    - generic [ref=e242]: Privilege Escalation
+                  - generic [ref=e243]: advanced
+                - paragraph [ref=e244]: Hunt for sudo, SUID, and scheduled-task weaknesses to move from limited access to root in realistic Linux targets.
+              - generic [ref=e245]:
+                - generic [ref=e246]: ₹399.00/hr
+                - link "Details" [ref=e247] [cursor=pointer]:
+                  - /url: /labs/4
+                  - text: Details
+                  - img [ref=e248]
+    - contentinfo [ref=e250]:
+      - generic [ref=e251]:
+        - generic [ref=e252]:
+          - img [ref=e253]
+          - generic [ref=e255]: CyberLab Portal v1.0.0
+        - generic [ref=e256]: SECURE CONNECTION ESTABLISHED
+  - region "Notifications (F8)":
+    - list

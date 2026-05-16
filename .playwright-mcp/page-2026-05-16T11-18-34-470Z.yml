@@ -1,0 +1,95 @@
+- generic [ref=e2]:
+  - generic [ref=e1155]:
+    - banner [ref=e1156]:
+      - generic [ref=e1157]:
+        - link "CyberLab_Portal" [ref=e1158] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e1160]
+          - generic [ref=e1162]: CyberLab_Portal
+        - generic [ref=e1163]:
+          - navigation [ref=e1164]:
+            - link "DASHBOARD" [ref=e1165] [cursor=pointer]:
+              - /url: /dashboard
+              - generic [ref=e1166]:
+                - img [ref=e1167]
+                - text: DASHBOARD
+            - link "LABS" [ref=e1172] [cursor=pointer]:
+              - /url: /labs
+              - generic [ref=e1173]:
+                - img [ref=e1174]
+                - text: LABS
+            - link "BOOKINGS" [ref=e1178] [cursor=pointer]:
+              - /url: /bookings
+              - generic [ref=e1179]:
+                - img [ref=e1180]
+                - text: BOOKINGS
+          - generic [ref=e1184]:
+            - generic [ref=e1187]: suhailult123@gmail.com
+            - button [ref=e1188]:
+              - img
+    - main [ref=e1189]:
+      - generic [ref=e1190]:
+        - generic [ref=e1191]:
+          - heading "COMMAND CENTER" [level=1] [ref=e1192]
+          - paragraph [ref=e1193]: "System status: ONLINE"
+        - generic [ref=e1194]:
+          - generic [ref=e1195]:
+            - img [ref=e1197]
+            - img [ref=e1200]
+            - generic [ref=e1202]:
+              - generic [ref=e1203]: "1"
+              - generic [ref=e1204]: Active Instances
+          - generic [ref=e1205]:
+            - img [ref=e1207]
+            - img [ref=e1210]
+            - generic [ref=e1212]:
+              - generic [ref=e1213]: "1"
+              - generic [ref=e1214]: Completed Labs
+          - generic [ref=e1215]:
+            - img [ref=e1217]
+            - img [ref=e1220]
+            - generic [ref=e1222]:
+              - generic [ref=e1223]: "1"
+              - generic [ref=e1224]: Total Bookings
+          - generic [ref=e1225]:
+            - img [ref=e1227]
+            - img [ref=e1230]
+            - generic [ref=e1232]:
+              - generic [ref=e1233]: $299.00
+              - generic [ref=e1234]: Total Spent
+        - generic [ref=e1235]:
+          - generic [ref=e1236]:
+            - heading "Recent Deployments" [level=2] [ref=e1237]
+            - link "View All" [ref=e1238] [cursor=pointer]:
+              - /url: /bookings
+          - table [ref=e1241]:
+            - rowgroup [ref=e1242]:
+              - row "ID Environment Status Duration Date Action" [ref=e1243]:
+                - columnheader "ID" [ref=e1244]
+                - columnheader "Environment" [ref=e1245]
+                - columnheader "Status" [ref=e1246]
+                - columnheader "Duration" [ref=e1247]
+                - columnheader "Date" [ref=e1248]
+                - columnheader "Action" [ref=e1249]
+            - rowgroup [ref=e1250]:
+              - row "#0001 Web Application Exploitation Lab provisioned 1h May 16, 2026 Access" [ref=e1251]:
+                - cell "#0001" [ref=e1252]
+                - cell "Web Application Exploitation Lab" [ref=e1253]
+                - cell "provisioned" [ref=e1254]
+                - cell "1h" [ref=e1255]:
+                  - img [ref=e1256]
+                  - text: 1h
+                - cell "May 16, 2026" [ref=e1259]
+                - cell "Access" [ref=e1260]:
+                  - link "Access" [ref=e1261] [cursor=pointer]:
+                    - /url: /bookings/1
+                    - img [ref=e1262]
+                    - text: Access
+    - contentinfo [ref=e1265]:
+      - generic [ref=e1266]:
+        - generic [ref=e1267]:
+          - img [ref=e1268]
+          - generic [ref=e1270]: CyberLab Portal v1.0.0
+        - generic [ref=e1271]: SECURE CONNECTION ESTABLISHED
+  - region "Notifications (F8)":
+    - list

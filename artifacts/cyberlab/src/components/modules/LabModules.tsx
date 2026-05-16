@@ -47,7 +47,6 @@ export function LabModules({ labId }: { labId: number }) {
   const { data: modules, isLoading: modsLoading } = useLabModules(labId);
   const { data: progressList } = useLabProgress(labId);
   const [activeId, setActiveId] = useState<number | null>(null);
-  const [earnedXP, setEarnedXP] = useState(0);
 
   if (modsLoading) {
     return (
@@ -88,7 +87,7 @@ export function LabModules({ labId }: { labId: number }) {
           <div className="text-[10px] text-muted-foreground uppercase tracking-wider mt-1">Modules Done</div>
         </div>
         <div className="border border-border bg-card p-4 text-center font-mono">
-          <div className="text-2xl font-bold text-yellow-400">{earnedFromDB + earnedXP}</div>
+          <div className="text-2xl font-bold text-yellow-400">{earnedFromDB}</div>
           <div className="text-[10px] text-muted-foreground uppercase tracking-wider mt-1">XP Earned</div>
         </div>
         <div className="border border-border bg-card p-4 text-center font-mono">
@@ -180,7 +179,7 @@ export function LabModules({ labId }: { labId: number }) {
               <ModuleContent
                 mod={active}
                 progress={getProgress(active.id)}
-                onComplete={(xp) => setEarnedXP((e) => e + xp)}
+                onComplete={() => undefined}
               />
             </div>
           ) : (

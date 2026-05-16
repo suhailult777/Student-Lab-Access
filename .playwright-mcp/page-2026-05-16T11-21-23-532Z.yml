@@ -1,0 +1,4 @@
+- generic [ref=e2]:
+  - generic [ref=e4]: Initializing Terminal...
+  - region "Notifications (F8)":
+    - list

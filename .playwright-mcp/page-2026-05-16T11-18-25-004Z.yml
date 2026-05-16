@@ -1,0 +1,62 @@
+- generic [ref=e2]:
+  - generic [ref=e1086]:
+    - banner [ref=e1087]:
+      - generic [ref=e1088]:
+        - link "CyberLab_Portal" [ref=e1089] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e1091]
+          - generic [ref=e1093]: CyberLab_Portal
+        - generic [ref=e1094]:
+          - navigation [ref=e1095]:
+            - link "DASHBOARD" [ref=e1096] [cursor=pointer]:
+              - /url: /dashboard
+              - generic [ref=e1097]:
+                - img [ref=e1098]
+                - text: DASHBOARD
+            - link "LABS" [ref=e1103] [cursor=pointer]:
+              - /url: /labs
+              - generic [ref=e1104]:
+                - img [ref=e1105]
+                - text: LABS
+            - link "BOOKINGS" [ref=e1109] [cursor=pointer]:
+              - /url: /bookings
+              - generic [ref=e1110]:
+                - img [ref=e1111]
+                - text: BOOKINGS
+          - generic [ref=e1115]:
+            - generic [ref=e1118]: suhailult123@gmail.com
+            - button [ref=e1119]:
+              - img
+    - main [ref=e1120]:
+      - generic [ref=e1121]:
+        - generic [ref=e1122]:
+          - heading "DEPLOYMENT HISTORY" [level=1] [ref=e1123]
+          - paragraph [ref=e1124]: Review and access your lab environments.
+        - generic [ref=e1126]:
+          - generic [ref=e1127]:
+            - generic [ref=e1128]:
+              - generic [ref=e1129]: "#0001"
+              - generic [ref=e1130]: provisioned
+            - heading "Web Application Exploitation Lab" [level=3] [ref=e1131]
+            - generic [ref=e1132]:
+              - generic [ref=e1133]:
+                - img [ref=e1134]
+                - text: 1 Hours
+              - generic [ref=e1137]: •
+              - generic [ref=e1138]: "Created: May 16, 2026 16:46"
+              - generic [ref=e1139]: •
+              - generic [ref=e1140]: "Expires: May 16, 2026 17:47"
+          - generic [ref=e1141]:
+            - generic [ref=e1143]: $299.00
+            - link "Access" [ref=e1144] [cursor=pointer]:
+              - /url: /bookings/1
+              - img [ref=e1145]
+              - text: Access
+    - contentinfo [ref=e1148]:
+      - generic [ref=e1149]:
+        - generic [ref=e1150]:
+          - img [ref=e1151]
+          - generic [ref=e1153]: CyberLab Portal v1.0.0
+        - generic [ref=e1154]: SECURE CONNECTION ESTABLISHED
+  - region "Notifications (F8)":
+    - list

@@ -3,6 +3,7 @@ import { useGetMyBookings } from "@workspace/api-client-react";
 import { Link } from "wouter";
 import { Clock, Terminal, ChevronRight, PlaySquare } from "lucide-react";
 import { format } from "date-fns";
+import { formatInr } from "@/lib/currency";
 
 export function Bookings() {
   const { data: bookings, isLoading } = useGetMyBookings();
@@ -63,7 +64,7 @@ export function Bookings() {
                 
                 <div className="flex items-center gap-4 border-t md:border-t-0 md:border-l border-border pt-4 md:pt-0 md:pl-6">
                   <div className="text-right flex-1 md:flex-none">
-                    <div className="font-mono font-bold text-lg">${booking.totalAmount.toFixed(2)}</div>
+                    <div className="font-mono font-bold text-lg">{formatInr(booking.totalAmount)}</div>
                   </div>
                   <Link href={`/bookings/${booking.id}`} className="bg-background border border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-3 font-mono text-sm uppercase transition-colors flex items-center gap-2 whitespace-nowrap">
                     {booking.status === 'provisioned' ? <><PlaySquare className="w-4 h-4" /> Access</> : <><ChevronRight className="w-4 h-4" /> Details</>}

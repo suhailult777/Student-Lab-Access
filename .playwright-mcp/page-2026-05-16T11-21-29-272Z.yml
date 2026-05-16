@@ -1,0 +1,113 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - banner [ref=e5]:
+      - generic [ref=e6]:
+        - link "CyberLab_Portal" [ref=e7] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e9]
+          - generic [ref=e11]: CyberLab_Portal
+        - generic [ref=e12]:
+          - navigation [ref=e13]:
+            - link "DASHBOARD" [ref=e14] [cursor=pointer]:
+              - /url: /dashboard
+              - generic [ref=e15]:
+                - img [ref=e16]
+                - text: DASHBOARD
+            - link "LABS" [ref=e21] [cursor=pointer]:
+              - /url: /labs
+              - generic [ref=e22]:
+                - img [ref=e23]
+                - text: LABS
+            - link "BOOKINGS" [ref=e27] [cursor=pointer]:
+              - /url: /bookings
+              - generic [ref=e28]:
+                - img [ref=e29]
+                - text: BOOKINGS
+          - generic [ref=e33]:
+            - generic [ref=e36]: suhailult123@gmail.com
+            - button [ref=e37]:
+              - img
+    - main [ref=e38]:
+      - generic [ref=e39]:
+        - link "Back to Catalog" [ref=e40] [cursor=pointer]:
+          - /url: /labs
+          - img [ref=e41]
+          - text: Back to Catalog
+        - generic [ref=e43]:
+          - img [ref=e45]
+          - generic [ref=e49]:
+            - generic [ref=e50]:
+              - generic [ref=e51]: Web Security
+              - generic [ref=e52]: beginner
+              - generic [ref=e53]: 4 Training Modules
+            - heading "Web Application Exploitation Lab" [level=1] [ref=e54]
+            - paragraph [ref=e55]: Practice recon, authentication bypass, and input validation attacks against a purpose-built vulnerable web stack.
+        - generic [ref=e56]:
+          - button "Overview" [ref=e57]:
+            - img [ref=e58]
+            - text: Overview
+          - button "Training Modules 4" [active] [ref=e60]:
+            - img [ref=e61]
+            - text: Training Modules
+            - generic [ref=e63]: "4"
+        - generic [ref=e65]:
+          - generic [ref=e66]:
+            - generic [ref=e67]:
+              - generic [ref=e68]: 1/4
+              - generic [ref=e69]: Modules Done
+            - generic [ref=e70]:
+              - generic [ref=e71]: "100"
+              - generic [ref=e72]: XP Earned
+            - generic [ref=e73]:
+              - generic [ref=e74]: "575"
+              - generic [ref=e75]: Total XP
+          - generic [ref=e76]:
+            - generic [ref=e77]:
+              - button "Quiz +100 XP HTTP Fundamentals for Pentesters 100%" [ref=e78]:
+                - generic [ref=e79]:
+                  - img [ref=e81]
+                  - generic [ref=e84]:
+                    - generic [ref=e85]:
+                      - generic [ref=e86]: Quiz
+                      - generic [ref=e87]: +100 XP
+                    - paragraph [ref=e88]: HTTP Fundamentals for Pentesters
+                    - generic [ref=e92]: 100%
+                  - img [ref=e93]
+              - button "2 Terminal +150 XP Recon with cURL" [ref=e95]:
+                - generic [ref=e96]:
+                  - generic [ref=e97]: "2"
+                  - generic [ref=e98]:
+                    - generic [ref=e99]:
+                      - generic [ref=e100]: Terminal
+                      - generic [ref=e101]: +150 XP
+                    - paragraph [ref=e102]: Recon with cURL
+                  - img [ref=e103]
+              - button "3 CTF Flag +200 XP SQL Injection — Find the Breach" [ref=e105]:
+                - generic [ref=e106]:
+                  - generic [ref=e107]: "3"
+                  - generic [ref=e108]:
+                    - generic [ref=e109]:
+                      - generic [ref=e110]: CTF Flag
+                      - generic [ref=e111]: +200 XP
+                    - paragraph [ref=e112]: SQL Injection — Find the Breach
+                  - img [ref=e113]
+              - button "4 Code Analysis +125 XP Spot the Vulnerability" [ref=e115]:
+                - generic [ref=e116]:
+                  - generic [ref=e117]: "4"
+                  - generic [ref=e118]:
+                    - generic [ref=e119]:
+                      - generic [ref=e120]: Code Analysis
+                      - generic [ref=e121]: +125 XP
+                    - paragraph [ref=e122]: Spot the Vulnerability
+                  - img [ref=e123]
+            - generic [ref=e127]:
+              - img [ref=e128]
+              - paragraph [ref=e130]: Select a module to begin training
+    - contentinfo [ref=e131]:
+      - generic [ref=e132]:
+        - generic [ref=e133]:
+          - img [ref=e134]
+          - generic [ref=e136]: CyberLab Portal v1.0.0
+        - generic [ref=e137]: SECURE CONNECTION ESTABLISHED
+  - region "Notifications (F8)":
+    - list

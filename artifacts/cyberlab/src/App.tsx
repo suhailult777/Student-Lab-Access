@@ -1,11 +1,12 @@
 import { useEffect, useRef } from "react";
-import { ClerkProvider, Show, useClerk } from "@clerk/react";
-import { publishableKeyFromHost } from "@clerk/react/internal";
+import { ClerkProvider, Show, useAuth, useClerk, useUser } from "@clerk/react";
 import { dark } from "@clerk/themes";
 import { Switch, Route, useLocation, Router as WouterRouter, Redirect } from "wouter";
 import { QueryClient, QueryClientProvider, useQueryClient } from "@tanstack/react-query";
+import { setAuthTokenGetter } from "@workspace/api-client-react";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { getClerkApiToken } from "@/lib/clerk-token";
 
 import { Home } from "@/pages/home";
 import { Dashboard } from "@/pages/dashboard";
@@ -36,10 +37,9 @@ function stripBase(path: string): string {
     : path;
 }
 
-const clerkPubKey = publishableKeyFromHost(
-  window.location.hostname,
-  import.meta.env.VITE_CLERK_PUBLISHABLE_KEY,
-);
+const clerkPubKey =
+  import.meta.env.VITE_CLERK_PUBLISHABLE_KEY ||
+  "pk_test_Z29vZC1tYW1tYWwtOS5jbGVyay5hY2NvdW50cy5kZXYk";
 
 const clerkProxyUrl = import.meta.env.VITE_CLERK_PROXY_URL;
 
@@ -148,6 +148,18 @@ function ClerkQueryClientCacheInvalidator() {
   return null;
 }
 
+function ClerkApiAuthBridge() {
+  const { getToken } = useAuth();
+  const { user } = useUser();
+
+  useEffect(() => {
+    setAuthTokenGetter(() => getClerkApiToken(getToken, user?.id ?? null));
+    return () => setAuthTokenGetter(null);
+  }, [getToken, user?.id]);
+
+  return null;
+}
+
 function Router() {
   return (
     <Switch>
@@ -197,6 +209,7 @@ function ClerkProviderWithRoutes() {
       routerReplace={(to) => setLocation(stripBase(to), { replace: true })}
     >
       <QueryClientProvider client={queryClient}>
+        <ClerkApiAuthBridge />
         <ClerkQueryClientCacheInvalidator />
         <TooltipProvider>
           <Router />

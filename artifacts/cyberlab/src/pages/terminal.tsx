@@ -24,9 +24,8 @@ export function TerminalPage({ params }: { params: { token: string } }) {
   const sendResize = useCallback((cols: number, rows: number) => {
     const ws = wsRef.current;
     if (!ws || ws.readyState !== WebSocket.OPEN) return;
-    const ctrl = Buffer.from(
+    const ctrl = new TextEncoder().encode(
       JSON.stringify({ type: "resize", cols, rows }),
-      "utf8",
     );
     const msg = new Uint8Array(ctrl.length + 1);
     msg[0] = 0x01; // control prefix

@@ -1,0 +1,64 @@
+- generic [ref=e2]:
+  - generic [ref=e257]:
+    - banner [ref=e258]:
+      - generic [ref=e259]:
+        - link "CyberLab_Portal" [ref=e260] [cursor=pointer]:
+          - /url: /
+          - img [ref=e262]
+          - generic [ref=e264]: CyberLab_Portal
+        - generic [ref=e265]:
+          - link "Authenticate" [ref=e266] [cursor=pointer]:
+            - /url: /sign-in
+          - link "Initialize" [ref=e267] [cursor=pointer]:
+            - /url: /sign-up
+    - main [ref=e268]:
+      - generic [ref=e272]:
+        - generic [ref=e273]:
+          - generic [ref=e274]:
+            - link "Student Lab Access" [ref=e276] [cursor=pointer]:
+              - /url: https://student-lab-access-zeta.vercel.app/
+              - img "Student Lab Access" [ref=e277]
+            - generic [ref=e278]:
+              - heading "AUTHENTICATE" [level=1] [ref=e279]
+              - paragraph [ref=e280]: Enter credentials to access the system
+          - generic [ref=e281]:
+            - button "Last used Sign in with Google Continue with Google" [ref=e284] [cursor=pointer]:
+              - generic: Last used
+              - generic [ref=e285]:
+                - generic "Sign in with Google" [ref=e287]
+                - generic [ref=e288]: Continue with Google
+            - paragraph [ref=e291]: or
+            - generic [ref=e293]:
+              - generic [ref=e294]:
+                - generic [ref=e297]:
+                  - generic [ref=e299]: Email address
+                  - textbox "Email address" [ref=e300]:
+                    - /placeholder: Enter your email address
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic: Password
+                      - generic:
+                        - textbox "Password":
+                          - /placeholder: Enter your password
+                        - button "Show password":
+                          - img
+              - button "Continue" [ref=e303] [cursor=pointer]:
+                - generic [ref=e304]:
+                  - text: Continue
+                  - img [ref=e305]
+        - generic [ref=e307]:
+          - generic [ref=e308]:
+            - generic [ref=e309]: Don’t have an account?
+            - link "Sign up" [ref=e310] [cursor=pointer]:
+              - /url: https://student-lab-access-zeta.vercel.app/sign-up
+          - paragraph [ref=e313]: Development mode
+    - contentinfo [ref=e314]:
+      - generic [ref=e315]:
+        - generic [ref=e316]:
+          - img [ref=e317]
+          - generic [ref=e319]: CyberLab Portal v1.0.0
+        - generic [ref=e320]: SECURE CONNECTION ESTABLISHED
+  - region "Notifications (F8)":
+    - list

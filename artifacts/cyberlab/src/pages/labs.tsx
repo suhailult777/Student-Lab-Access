@@ -4,6 +4,7 @@ import { Link } from "wouter";
 import { Database, Filter, Search, Terminal, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
+import { formatInr } from "@/lib/currency";
 
 export function Labs() {
   const { data: labs, isLoading } = useGetLabs();
@@ -104,7 +105,7 @@ export function Labs() {
                   
                   <div className="px-6 py-4 border-t border-border bg-background/50 flex justify-between items-center z-10">
                     <div className="space-y-1">
-                      <div className="font-mono text-primary font-bold text-lg">${lab.pricePerHour.toFixed(2)}<span className="text-xs text-muted-foreground">/hr</span></div>
+                      <div className="font-mono text-primary font-bold text-lg">{formatInr(lab.pricePerHour)}<span className="text-xs text-muted-foreground">/hr</span></div>
                       <div className="text-[10px] text-muted-foreground font-mono uppercase">Max {lab.maxHours}h</div>
                     </div>
                     <Link href={`/labs/${lab.id}`} className="bg-primary/10 hover:bg-primary text-primary hover:text-primary-foreground border border-primary px-4 py-2 text-xs font-mono uppercase transition-colors flex items-center gap-1">

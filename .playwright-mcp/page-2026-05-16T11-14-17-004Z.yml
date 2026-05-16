@@ -1,0 +1,188 @@
+- generic [ref=e2]:
+  - generic [ref=e99]:
+    - banner [ref=e100]:
+      - generic [ref=e101]:
+        - link "CyberLab_Portal" [ref=e102] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e104]
+          - generic [ref=e106]: CyberLab_Portal
+        - generic [ref=e107]:
+          - navigation [ref=e108]:
+            - link "DASHBOARD" [ref=e109] [cursor=pointer]:
+              - /url: /dashboard
+              - generic [ref=e110]:
+                - img [ref=e111]
+                - text: DASHBOARD
+            - link "LABS" [ref=e116] [cursor=pointer]:
+              - /url: /labs
+              - generic [ref=e117]:
+                - img [ref=e118]
+                - text: LABS
+            - link "BOOKINGS" [ref=e122] [cursor=pointer]:
+              - /url: /bookings
+              - generic [ref=e123]:
+                - img [ref=e124]
+                - text: BOOKINGS
+          - generic [ref=e128]:
+            - generic [ref=e131]: suhailult123@gmail.com
+            - button [ref=e132]:
+              - img
+    - main [ref=e133]:
+      - generic [ref=e134]:
+        - generic [ref=e135]:
+          - heading "LAB CATALOG" [level=1] [ref=e136]:
+            - img [ref=e137]
+            - text: LAB CATALOG
+          - paragraph [ref=e141]: Select an environment to provision.
+        - generic [ref=e142]:
+          - generic [ref=e143]:
+            - img [ref=e144]
+            - textbox "Search environments..." [ref=e147]
+          - generic [ref=e148]:
+            - img [ref=e149]
+            - combobox [ref=e151]:
+              - option "ALL DIFFICULTIES" [selected]
+              - option "BEGINNER"
+              - option "INTERMEDIATE"
+              - option "ADVANCED"
+        - generic [ref=e152]:
+          - generic [ref=e153]:
+            - img [ref=e155]
+            - generic [ref=e157]:
+              - generic [ref=e158]:
+                - generic [ref=e159]:
+                  - heading "Web Application Exploitation Lab" [level=3] [ref=e160]
+                  - generic [ref=e161]: Web Security
+                - generic [ref=e162]: beginner
+              - paragraph [ref=e163]: Practice recon, authentication bypass, and input validation attacks against a purpose-built vulnerable web stack.
+              - generic [ref=e164]:
+                - generic [ref=e165]: Burp Suite
+                - generic [ref=e166]: OWASP ZAP
+                - generic [ref=e167]: cURL
+                - generic [ref=e168]: +2 more
+            - generic [ref=e169]:
+              - generic [ref=e170]:
+                - generic [ref=e171]: $299.00/hr
+                - generic [ref=e172]: Max 6h
+              - link "Configure" [ref=e173] [cursor=pointer]:
+                - /url: /labs/1
+                - text: Configure
+                - img [ref=e174]
+          - generic [ref=e176]:
+            - img [ref=e178]
+            - generic [ref=e180]:
+              - generic [ref=e181]:
+                - generic [ref=e182]:
+                  - heading "Network Traffic Analysis Lab" [level=3] [ref=e183]
+                  - generic [ref=e184]: Network Forensics
+                - generic [ref=e185]: intermediate
+              - paragraph [ref=e186]: Investigate packet captures, suspicious flows, and credential leakage across a segmented network intrusion scenario.
+              - generic [ref=e187]:
+                - generic [ref=e188]: Wireshark
+                - generic [ref=e189]: tcpdump
+                - generic [ref=e190]: Zeek
+                - generic [ref=e191]: +2 more
+            - generic [ref=e192]:
+              - generic [ref=e193]:
+                - generic [ref=e194]: $349.00/hr
+                - generic [ref=e195]: Max 8h
+              - link "Configure" [ref=e196] [cursor=pointer]:
+                - /url: /labs/2
+                - text: Configure
+                - img [ref=e197]
+          - generic [ref=e199]:
+            - img [ref=e201]
+            - generic [ref=e203]:
+              - generic [ref=e204]:
+                - generic [ref=e205]:
+                  - heading "Malware Analysis Sandbox" [level=3] [ref=e206]
+                  - generic [ref=e207]: Malware Research
+                - generic [ref=e208]: advanced
+              - paragraph [ref=e209]: Dissect suspicious binaries, extract indicators, and study evasive behavior inside an isolated reverse-engineering environment.
+              - generic [ref=e210]:
+                - generic [ref=e211]: Ghidra
+                - generic [ref=e212]: strings
+                - generic [ref=e213]: YARA
+                - generic [ref=e214]: +2 more
+            - generic [ref=e215]:
+              - generic [ref=e216]:
+                - generic [ref=e217]: $499.00/hr
+                - generic [ref=e218]: Max 10h
+              - link "Configure" [ref=e219] [cursor=pointer]:
+                - /url: /labs/3
+                - text: Configure
+                - img [ref=e220]
+          - generic [ref=e222]:
+            - img [ref=e224]
+            - generic [ref=e226]:
+              - generic [ref=e227]:
+                - generic [ref=e228]:
+                  - heading "Linux Privilege Escalation Lab" [level=3] [ref=e229]
+                  - generic [ref=e230]: Privilege Escalation
+                - generic [ref=e231]: advanced
+              - paragraph [ref=e232]: Hunt for sudo, SUID, and scheduled-task weaknesses to move from limited access to root in realistic Linux targets.
+              - generic [ref=e233]:
+                - generic [ref=e234]: LinPEAS
+                - generic [ref=e235]: GTFOBins
+                - generic [ref=e236]: pspy
+                - generic [ref=e237]: +2 more
+            - generic [ref=e238]:
+              - generic [ref=e239]:
+                - generic [ref=e240]: $399.00/hr
+                - generic [ref=e241]: Max 8h
+              - link "Configure" [ref=e242] [cursor=pointer]:
+                - /url: /labs/4
+                - text: Configure
+                - img [ref=e243]
+          - generic [ref=e245]:
+            - img [ref=e247]
+            - generic [ref=e249]:
+              - generic [ref=e250]:
+                - generic [ref=e251]:
+                  - heading "Active Directory Attack Range" [level=3] [ref=e252]
+                  - generic [ref=e253]: Active Directory
+                - generic [ref=e254]: advanced
+              - paragraph [ref=e255]: Enumerate a Windows domain, identify attack paths, and simulate Kerberos abuse against a small enterprise forest.
+              - generic [ref=e256]:
+                - generic [ref=e257]: BloodHound
+                - generic [ref=e258]: Impacket
+                - generic [ref=e259]: Rubeus
+                - generic [ref=e260]: +2 more
+            - generic [ref=e261]:
+              - generic [ref=e262]:
+                - generic [ref=e263]: $599.00/hr
+                - generic [ref=e264]: Max 12h
+              - link "Configure" [ref=e265] [cursor=pointer]:
+                - /url: /labs/5
+                - text: Configure
+                - img [ref=e266]
+          - generic [ref=e268]:
+            - img [ref=e270]
+            - generic [ref=e272]:
+              - generic [ref=e273]:
+                - generic [ref=e274]:
+                  - heading "CTF Foundations Arena" [level=3] [ref=e275]
+                  - generic [ref=e276]: CTF Training
+                - generic [ref=e277]: beginner
+              - paragraph [ref=e278]: Build core capture-the-flag instincts with guided challenges across crypto, pwn, web, and forensic problem-solving.
+              - generic [ref=e279]:
+                - generic [ref=e280]: Ghidra
+                - generic [ref=e281]: binwalk
+                - generic [ref=e282]: CyberChef
+                - generic [ref=e283]: +2 more
+            - generic [ref=e284]:
+              - generic [ref=e285]:
+                - generic [ref=e286]: $199.00/hr
+                - generic [ref=e287]: Max 5h
+              - link "Configure" [ref=e288] [cursor=pointer]:
+                - /url: /labs/6
+                - text: Configure
+                - img [ref=e289]
+    - contentinfo [ref=e291]:
+      - generic [ref=e292]:
+        - generic [ref=e293]:
+          - img [ref=e294]
+          - generic [ref=e296]: CyberLab Portal v1.0.0
+        - generic [ref=e297]: SECURE CONNECTION ESTABLISHED
+  - region "Notifications (F8)":
+    - list

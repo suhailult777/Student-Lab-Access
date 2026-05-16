@@ -1,0 +1,115 @@
+- generic [ref=e2]:
+  - generic [ref=e344]:
+    - banner [ref=e345]:
+      - generic [ref=e346]:
+        - link "CyberLab_Portal" [ref=e347] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e349]
+          - generic [ref=e351]: CyberLab_Portal
+        - generic [ref=e352]:
+          - navigation [ref=e353]:
+            - link "DASHBOARD" [ref=e354] [cursor=pointer]:
+              - /url: /dashboard
+              - generic [ref=e355]:
+                - img [ref=e356]
+                - text: DASHBOARD
+            - link "LABS" [ref=e361] [cursor=pointer]:
+              - /url: /labs
+              - generic [ref=e362]:
+                - img [ref=e363]
+                - text: LABS
+            - link "BOOKINGS" [ref=e367] [cursor=pointer]:
+              - /url: /bookings
+              - generic [ref=e368]:
+                - img [ref=e369]
+                - text: BOOKINGS
+          - generic [ref=e373]:
+            - generic [ref=e376]: suhailult123@gmail.com
+            - button [ref=e377]:
+              - img
+    - main [ref=e378]:
+      - generic [ref=e379]:
+        - link "Back to Catalog" [ref=e380] [cursor=pointer]:
+          - /url: /labs
+          - img [ref=e381]
+          - text: Back to Catalog
+        - generic [ref=e383]:
+          - img [ref=e385]
+          - generic [ref=e389]:
+            - generic [ref=e390]:
+              - generic [ref=e391]: Web Security
+              - generic [ref=e392]: beginner
+              - generic [ref=e393]: 4 Training Modules
+            - heading "Web Application Exploitation Lab" [level=1] [ref=e394]
+            - paragraph [ref=e395]: Practice recon, authentication bypass, and input validation attacks against a purpose-built vulnerable web stack.
+        - generic [ref=e396]:
+          - button "Overview" [ref=e397]:
+            - img [ref=e398]
+            - text: Overview
+          - button "Training Modules 4" [ref=e400]:
+            - img [ref=e401]
+            - text: Training Modules
+            - generic [ref=e403]: "4"
+        - generic [ref=e404]:
+          - generic [ref=e405]:
+            - generic [ref=e406]:
+              - heading "Pre-installed Tools" [level=2] [ref=e407]:
+                - img [ref=e408]
+                - text: Pre-installed Tools
+              - generic [ref=e410]:
+                - generic [ref=e411]: Burp Suite
+                - generic [ref=e412]: OWASP ZAP
+                - generic [ref=e413]: cURL
+                - generic [ref=e414]: ffuf
+                - generic [ref=e415]: Firefox DevTools
+            - generic [ref=e416]:
+              - heading "Environment Details" [level=2] [ref=e417]:
+                - img [ref=e418]
+                - text: Environment Details
+              - list [ref=e420]:
+                - listitem [ref=e421]:
+                  - img [ref=e422]
+                  - text: Fully isolated network segment
+                - listitem [ref=e424]:
+                  - img [ref=e425]
+                  - text: Web-based VNC access included
+                - listitem [ref=e427]:
+                  - img [ref=e428]
+                  - text: Root/Administrator privileges on all targets
+                - listitem [ref=e432]:
+                  - img [ref=e433]
+                  - text: 4 interactive training modules included
+            - generic [ref=e437]:
+              - heading "Training Modules Preview" [level=2] [ref=e438]:
+                - img [ref=e439]
+                - text: Training Modules Preview
+              - paragraph [ref=e441]: "This lab includes 4 hands-on interactive modules: quizzes, simulated terminal challenges, CTF-style flag captures, and code vulnerability analysis."
+              - button "Start Training" [ref=e442]:
+                - text: Start Training
+                - img [ref=e443]
+          - generic [ref=e446]:
+            - heading "Provisioning Setup" [level=2] [ref=e447]
+            - generic [ref=e448]:
+              - generic [ref=e449]:
+                - generic [ref=e450]: Rate
+                - generic [ref=e451]: $299.00 / hr
+              - generic [ref=e452]:
+                - text: Duration (Hours)
+                - generic [ref=e453]:
+                  - slider [ref=e454]: "1"
+                  - generic [ref=e455]: "1"
+                - generic [ref=e456]: "Max: 6 hours"
+              - generic [ref=e457]:
+                - generic [ref=e458]: Total
+                - generic [ref=e459]: $299.00
+              - button "Deploy Environment" [ref=e460]:
+                - img
+                - text: Deploy Environment
+    - contentinfo [ref=e461]:
+      - generic [ref=e462]:
+        - generic [ref=e463]:
+          - img [ref=e464]
+          - generic [ref=e466]: CyberLab Portal v1.0.0
+        - generic [ref=e467]: SECURE CONNECTION ESTABLISHED
+  - region "Notifications (F8)":
+    - list

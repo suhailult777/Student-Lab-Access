@@ -1,0 +1,78 @@
+- generic [ref=e2]:
+  - generic [ref=e880]:
+    - banner [ref=e881]:
+      - generic [ref=e882]:
+        - link "CyberLab_Portal" [ref=e883] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e885]
+          - generic [ref=e887]: CyberLab_Portal
+        - generic [ref=e888]:
+          - navigation [ref=e889]:
+            - link "DASHBOARD" [ref=e890] [cursor=pointer]:
+              - /url: /dashboard
+              - generic [ref=e891]:
+                - img [ref=e892]
+                - text: DASHBOARD
+            - link "LABS" [ref=e897] [cursor=pointer]:
+              - /url: /labs
+              - generic [ref=e898]:
+                - img [ref=e899]
+                - text: LABS
+            - link "BOOKINGS" [ref=e903] [cursor=pointer]:
+              - /url: /bookings
+              - generic [ref=e904]:
+                - img [ref=e905]
+                - text: BOOKINGS
+          - generic [ref=e909]:
+            - generic [ref=e912]: suhailult123@gmail.com
+            - button [ref=e913]:
+              - img
+    - main [ref=e914]:
+      - generic [ref=e915]:
+        - link "Back to History" [ref=e916] [cursor=pointer]:
+          - /url: /bookings
+          - img [ref=e917]
+          - text: Back to History
+        - generic [ref=e919]:
+          - 'heading "DEPLOYMENT #0001" [level=1] [ref=e920]'
+          - generic [ref=e921]: "STATUS: paid"
+        - generic [ref=e922]:
+          - generic [ref=e924]:
+            - heading "Environment Details" [level=2] [ref=e925]:
+              - img [ref=e926]
+              - text: Environment Details
+            - generic [ref=e930]:
+              - generic [ref=e931]:
+                - generic [ref=e932]: Target Lab
+                - generic [ref=e933]: Web Application Exploitation Lab
+              - generic [ref=e934]:
+                - generic [ref=e935]:
+                  - generic [ref=e936]: Duration
+                  - generic [ref=e937]:
+                    - img [ref=e938]
+                    - text: 1h
+                - generic [ref=e941]:
+                  - generic [ref=e942]: Created
+                  - generic [ref=e943]: May 16, 16:46
+          - generic [ref=e945]:
+            - heading "Payment Info" [level=2] [ref=e946]:
+              - img [ref=e947]
+              - text: Payment Info
+            - generic [ref=e949]:
+              - generic [ref=e950]:
+                - generic [ref=e951]: Amount
+                - generic [ref=e952]: ₹299.00
+              - generic [ref=e953]:
+                - generic [ref=e954]: Txn ID
+                - generic "MOCK11778930244723" [ref=e955]
+              - button "PROVISION ENVIRONMENT" [ref=e957]:
+                - img
+                - text: PROVISION ENVIRONMENT
+    - contentinfo [ref=e958]:
+      - generic [ref=e959]:
+        - generic [ref=e960]:
+          - img [ref=e961]
+          - generic [ref=e963]: CyberLab Portal v1.0.0
+        - generic [ref=e964]: SECURE CONNECTION ESTABLISHED
+  - region "Notifications (F8)":
+    - list

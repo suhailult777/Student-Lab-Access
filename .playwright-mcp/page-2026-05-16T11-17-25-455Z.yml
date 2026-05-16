@@ -1,0 +1,43 @@
+- generic [ref=e2]:
+  - generic [ref=e721]:
+    - banner [ref=e722]:
+      - generic [ref=e723]:
+        - link "CyberLab_Portal" [ref=e724] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e726]
+          - generic [ref=e728]: CyberLab_Portal
+        - generic [ref=e729]:
+          - navigation [ref=e730]:
+            - link "DASHBOARD" [ref=e731] [cursor=pointer]:
+              - /url: /dashboard
+              - generic [ref=e732]:
+                - img [ref=e733]
+                - text: DASHBOARD
+            - link "LABS" [ref=e738] [cursor=pointer]:
+              - /url: /labs
+              - generic [ref=e739]:
+                - img [ref=e740]
+                - text: LABS
+            - link "BOOKINGS" [ref=e744] [cursor=pointer]:
+              - /url: /bookings
+              - generic [ref=e745]:
+                - img [ref=e746]
+                - text: BOOKINGS
+          - generic [ref=e750]:
+            - generic [ref=e753]: suhailult123@gmail.com
+            - button [ref=e754]:
+              - img
+    - main [ref=e755]:
+      - generic [ref=e756]:
+        - img [ref=e875]
+        - heading "Invalid Payment Request" [level=1] [ref=e877]
+        - paragraph [ref=e878]: This booking is either invalid or has already been processed.
+        - button "Return to Bookings" [ref=e879]
+    - contentinfo [ref=e801]:
+      - generic [ref=e802]:
+        - generic [ref=e803]:
+          - img [ref=e804]
+          - generic [ref=e806]: CyberLab Portal v1.0.0
+        - generic [ref=e807]: SECURE CONNECTION ESTABLISHED
+  - region "Notifications (F8)":
+    - list

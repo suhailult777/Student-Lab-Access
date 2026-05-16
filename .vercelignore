@@ -1,2 +1,7 @@
 **/node_modules
 **/.git
+**/.vercel
+.env*
+.local
+artifacts/**/dist
+vercel-logs.txt

@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { useAuth } from "@clerk/react";
+import { useAuth, useUser } from "@clerk/react";
+import { getClerkApiToken } from "@/lib/clerk-token";
 
 const BASE = "/api";
 
@@ -63,10 +64,11 @@ export function useModule(moduleId: number) {
 
 export function useLabProgress(labId: number) {
   const { getToken, isSignedIn } = useAuth();
+  const { user } = useUser();
   return useQuery<ModuleProgress[]>({
     queryKey: ["progress", "lab", labId],
     queryFn: async () => {
-      const token = await getToken();
+      const token = await getClerkApiToken(getToken, user?.id ?? null);
       return apiFetch(`/labs/${labId}/progress`, token);
     },
     enabled: !!labId && !!isSignedIn,
@@ -75,10 +77,11 @@ export function useLabProgress(labId: number) {
 
 export function useSubmitModule(moduleId: number) {
   const { getToken } = useAuth();
+  const { user } = useUser();
   const queryClient = useQueryClient();
   return useMutation<SubmitResult, Error, { answer?: any; commandsCompleted?: number }>({
     mutationFn: async (body) => {
-      const token = await getToken();
+      const token = await getClerkApiToken(getToken, user?.id ?? null);
       return apiFetch(`/modules/${moduleId}/submit`, token, {
         method: "POST",
         body: JSON.stringify(body),

@@ -2,6 +2,7 @@ import { Layout } from "@/components/layout";
 import { Link } from "wouter";
 import { ShieldAlert, Terminal, Lock, ChevronRight, Activity } from "lucide-react";
 import { useGetLabs } from "@workspace/api-client-react";
+import { formatInr } from "@/lib/currency";
 
 export function Home() {
   const { data: labs, isLoading } = useGetLabs();
@@ -95,7 +96,7 @@ export function Home() {
                       <p className="text-sm text-muted-foreground line-clamp-2">{lab.description}</p>
                     </div>
                     <div className="px-6 py-4 border-t border-border bg-background/50 flex justify-between items-center z-10">
-                      <span className="font-mono text-primary font-bold">${lab.pricePerHour}/hr</span>
+                      <span className="font-mono text-primary font-bold">{formatInr(lab.pricePerHour)}/hr</span>
                       <Link href={`/labs/${lab.id}`} className="text-xs font-mono uppercase hover:text-primary transition-colors flex items-center gap-1">
                         Details <ChevronRight className="w-3 h-3" />
                       </Link>

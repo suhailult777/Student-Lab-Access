@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { useGetDashboardSummary } from "@workspace/api-client-react";
 import { Activity, Clock, CreditCard, PlaySquare, Shield, Terminal } from "lucide-react";
 import { format } from "date-fns";
+import { formatInr } from "@/lib/currency";
 
 export function Dashboard() {
   const { data: summary, isLoading } = useGetDashboardSummary();
@@ -77,7 +78,7 @@ export function Dashboard() {
               <CreditCard className="w-6 h-6" />
             </div>
             <div>
-              <div className="text-3xl font-mono font-bold">${summary?.totalSpent.toFixed(2) || '0.00'}</div>
+              <div className="text-3xl font-mono font-bold">{summary ? formatInr(summary.totalSpent) : "₹0.00"}</div>
               <div className="text-xs font-mono uppercase text-muted-foreground tracking-wider">Total Spent</div>
             </div>
           </div>

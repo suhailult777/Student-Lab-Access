@@ -1,0 +1,79 @@
+- generic [ref=e2]:
+  - generic [ref=e721]:
+    - banner [ref=e722]:
+      - generic [ref=e723]:
+        - link "CyberLab_Portal" [ref=e724] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e726]
+          - generic [ref=e728]: CyberLab_Portal
+        - generic [ref=e729]:
+          - navigation [ref=e730]:
+            - link "DASHBOARD" [ref=e731] [cursor=pointer]:
+              - /url: /dashboard
+              - generic [ref=e732]:
+                - img [ref=e733]
+                - text: DASHBOARD
+            - link "LABS" [ref=e738] [cursor=pointer]:
+              - /url: /labs
+              - generic [ref=e739]:
+                - img [ref=e740]
+                - text: LABS
+            - link "BOOKINGS" [ref=e744] [cursor=pointer]:
+              - /url: /bookings
+              - generic [ref=e745]:
+                - img [ref=e746]
+                - text: BOOKINGS
+          - generic [ref=e750]:
+            - generic [ref=e753]: suhailult123@gmail.com
+            - button [ref=e754]:
+              - img
+    - main [ref=e755]:
+      - generic [ref=e757]:
+        - generic [ref=e758]:
+          - generic [ref=e759]:
+            - heading "Order Summary" [level=2] [ref=e761]:
+              - img [ref=e762]
+              - text: Order Summary
+            - generic [ref=e764]:
+              - generic [ref=e765]:
+                - generic [ref=e766]: Environment
+                - generic [ref=e767]: Web Application Exploitation Lab
+              - generic [ref=e768]:
+                - generic [ref=e769]: Duration
+                - generic [ref=e770]: 1 Hours
+              - generic [ref=e771]:
+                - generic [ref=e772]: Rate
+                - generic [ref=e773]: ₹299.00 / hr
+              - generic [ref=e774]:
+                - generic [ref=e775]: Booking ID
+                - generic [ref=e776]: "#0001"
+              - generic [ref=e777]:
+                - generic [ref=e778]: Total Due
+                - generic [ref=e779]: ₹299.00
+          - generic [ref=e780]:
+            - img [ref=e781]
+            - text: Powered by Easebuzz · 256-bit TLS encryption
+        - generic [ref=e786]:
+          - generic [ref=e787]:
+            - img [ref=e788]
+            - heading "Secure Checkout" [level=1] [ref=e790]
+            - paragraph [ref=e791]: Complete your payment to deploy the lab environment.
+          - generic [ref=e792]:
+            - generic [ref=e793]:
+              - generic [ref=e794]: Booking
+              - generic [ref=e795]: "#0001"
+            - generic [ref=e796]:
+              - generic [ref=e797]: Amount
+              - generic [ref=e798]: ₹299.00
+          - button "PAY ₹299.00 SECURELY" [ref=e799]:
+            - img
+            - text: PAY ₹299.00 SECURELY
+          - paragraph [ref=e800]: Powered by Easebuzz · PCI-DSS Compliant · By paying you agree to CyberLab terms
+    - contentinfo [ref=e801]:
+      - generic [ref=e802]:
+        - generic [ref=e803]:
+          - img [ref=e804]
+          - generic [ref=e806]: CyberLab Portal v1.0.0
+        - generic [ref=e807]: SECURE CONNECTION ESTABLISHED
+  - region "Notifications (F8)":
+    - list

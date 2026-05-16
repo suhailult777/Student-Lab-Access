@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useUser } from "@clerk/react";
 import { useToast } from "@/hooks/use-toast";
 import { LabModules } from "@/components/modules/LabModules";
+import { formatInr } from "@/lib/currency";
 
 type Tab = "overview" | "training";
 
@@ -186,7 +187,7 @@ export function LabDetail({ params }: { params: { id: string } }) {
                 <div className="space-y-4">
                   <div className="flex justify-between items-center text-sm font-mono uppercase tracking-wider text-muted-foreground">
                     <span>Rate</span>
-                    <span className="text-foreground">${lab.pricePerHour.toFixed(2)} / hr</span>
+                    <span className="text-foreground">{formatInr(lab.pricePerHour)} / hr</span>
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs font-mono uppercase tracking-wider text-muted-foreground">Duration (Hours)</label>
@@ -205,7 +206,7 @@ export function LabDetail({ params }: { params: { id: string } }) {
                   </div>
                   <div className="border-t border-border pt-4 flex justify-between items-center">
                     <span className="text-sm font-mono uppercase tracking-wider text-muted-foreground">Total</span>
-                    <span className="text-2xl font-mono font-bold text-primary">${(lab.pricePerHour * hours).toFixed(2)}</span>
+                    <span className="text-2xl font-mono font-bold text-primary">{formatInr(lab.pricePerHour * hours)}</span>
                   </div>
                   <Button
                     className="w-full font-mono font-bold tracking-widest uppercase rounded-none py-6 shadow-[0_0_15px_rgba(0,255,255,0.2)]"

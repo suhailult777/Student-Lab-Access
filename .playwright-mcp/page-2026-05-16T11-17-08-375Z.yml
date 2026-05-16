@@ -1,0 +1,131 @@
+- generic [ref=e2]:
+  - generic [ref=e721]:
+    - banner [ref=e722]:
+      - generic [ref=e723]:
+        - link "CyberLab_Portal" [ref=e724] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e726]
+          - generic [ref=e728]: CyberLab_Portal
+        - generic [ref=e729]:
+          - navigation [ref=e730]:
+            - link "DASHBOARD" [ref=e731] [cursor=pointer]:
+              - /url: /dashboard
+              - generic [ref=e732]:
+                - img [ref=e733]
+                - text: DASHBOARD
+            - link "LABS" [ref=e738] [cursor=pointer]:
+              - /url: /labs
+              - generic [ref=e739]:
+                - img [ref=e740]
+                - text: LABS
+            - link "BOOKINGS" [ref=e744] [cursor=pointer]:
+              - /url: /bookings
+              - generic [ref=e745]:
+                - img [ref=e746]
+                - text: BOOKINGS
+          - generic [ref=e750]:
+            - generic [ref=e753]: suhailult123@gmail.com
+            - button [ref=e754]:
+              - img
+    - main [ref=e755]:
+      - generic [ref=e757]:
+        - generic [ref=e758]:
+          - generic [ref=e759]:
+            - heading "Order Summary" [level=2] [ref=e761]:
+              - img [ref=e762]
+              - text: Order Summary
+            - generic [ref=e764]:
+              - generic [ref=e765]:
+                - generic [ref=e766]: Environment
+                - generic [ref=e767]: Web Application Exploitation Lab
+              - generic [ref=e768]:
+                - generic [ref=e769]: Duration
+                - generic [ref=e770]: 1 Hours
+              - generic [ref=e771]:
+                - generic [ref=e772]: Rate
+                - generic [ref=e773]: ₹299.00 / hr
+              - generic [ref=e774]:
+                - generic [ref=e775]: Booking ID
+                - generic [ref=e776]: "#0001"
+              - generic [ref=e777]:
+                - generic [ref=e778]: Total Due
+                - generic [ref=e779]: ₹299.00
+          - generic [ref=e808]:
+            - generic [ref=e809]:
+              - generic [ref=e810]: CyberLab Pay
+              - img [ref=e811]
+            - generic [ref=e815]:
+              - generic [ref=e816]: ···· ···· ···· ····
+              - generic [ref=e817]:
+                - generic [ref=e818]:
+                  - generic [ref=e819]: Card Holder
+                  - generic [ref=e820]: YOUR NAME
+                - generic [ref=e821]:
+                  - generic [ref=e822]: Expires
+                  - generic [ref=e823]: MM/YY
+          - generic [ref=e780]:
+            - img [ref=e781]
+            - text: Test mode active — any card details accepted
+        - generic [ref=e824]:
+          - generic [ref=e825]:
+            - img [ref=e826]
+            - heading "Test Checkout" [level=1] [ref=e828]
+            - generic [ref=e829]: Mock Mode
+          - generic [ref=e830]:
+            - generic [ref=e831]:
+              - img [ref=e832]
+              - text: UAT Test Cards
+            - table [ref=e835]:
+              - rowgroup [ref=e836]:
+                - row "Brand Card Number CVV Expiry" [ref=e837]:
+                  - columnheader "Brand" [ref=e838]
+                  - columnheader "Card Number" [ref=e839]
+                  - columnheader "CVV" [ref=e840]
+                  - columnheader "Expiry" [ref=e841]
+              - rowgroup [ref=e842]:
+                - row "Visa (Debit) 4012 8888 8888 1881 123 07/28" [ref=e843]:
+                  - cell "Visa (Debit)" [ref=e844]
+                  - cell "4012 8888 8888 1881" [ref=e845]
+                  - cell "123" [ref=e846]
+                  - cell "07/28" [ref=e847]
+                - row "Visa (Credit) 4111 1111 1111 1111 123 07/28" [ref=e848]:
+                  - cell "Visa (Credit)" [ref=e849]
+                  - cell "4111 1111 1111 1111" [ref=e850]
+                  - cell "123" [ref=e851]
+                  - cell "07/28" [ref=e852]
+                - row "Mastercard (Debit) 5553 0422 4198 4105 123 07/28" [ref=e853]:
+                  - cell "Mastercard (Debit)" [ref=e854]
+                  - cell "5553 0422 4198 4105" [ref=e855]
+                  - cell "123" [ref=e856]
+                  - cell "07/28" [ref=e857]
+                - row "Mastercard (Credit) 5123 4567 8901 2346 123 07/28" [ref=e858]:
+                  - cell "Mastercard (Credit)" [ref=e859]
+                  - cell "5123 4567 8901 2346" [ref=e860]
+                  - cell "123" [ref=e861]
+                  - cell "07/28" [ref=e862]
+            - paragraph [ref=e863]: "UPI: success@easebuzz (success) · failure@easebuzz (fail)"
+          - generic [ref=e864]:
+            - text: Card Number
+            - textbox "0000 0000 0000 0000" [ref=e865]
+          - generic [ref=e866]:
+            - text: Card Holder Name
+            - textbox "Full Name" [ref=e867]
+          - generic [ref=e868]:
+            - generic [ref=e869]:
+              - text: Expiry
+              - textbox "MM/YY" [ref=e870]
+            - generic [ref=e871]:
+              - text: CVV
+              - textbox "•••" [ref=e872]
+          - button "PAY ₹299.00" [ref=e873]:
+            - img
+            - text: PAY ₹299.00
+          - paragraph [ref=e874]: Test mode — no real charges
+    - contentinfo [ref=e801]:
+      - generic [ref=e802]:
+        - generic [ref=e803]:
+          - img [ref=e804]
+          - generic [ref=e806]: CyberLab Portal v1.0.0
+        - generic [ref=e807]: SECURE CONNECTION ESTABLISHED
+  - region "Notifications (F8)":
+    - list

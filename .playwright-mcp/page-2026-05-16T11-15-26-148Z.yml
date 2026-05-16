@@ -1,0 +1,141 @@
+- generic [ref=e2]:
+  - generic [ref=e344]:
+    - banner [ref=e345]:
+      - generic [ref=e346]:
+        - link "CyberLab_Portal" [ref=e347] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e349]
+          - generic [ref=e351]: CyberLab_Portal
+        - generic [ref=e352]:
+          - navigation [ref=e353]:
+            - link "DASHBOARD" [ref=e354] [cursor=pointer]:
+              - /url: /dashboard
+              - generic [ref=e355]:
+                - img [ref=e356]
+                - text: DASHBOARD
+            - link "LABS" [ref=e361] [cursor=pointer]:
+              - /url: /labs
+              - generic [ref=e362]:
+                - img [ref=e363]
+                - text: LABS
+            - link "BOOKINGS" [ref=e367] [cursor=pointer]:
+              - /url: /bookings
+              - generic [ref=e368]:
+                - img [ref=e369]
+                - text: BOOKINGS
+          - generic [ref=e373]:
+            - generic [ref=e376]: suhailult123@gmail.com
+            - button [ref=e377]:
+              - img
+    - main [ref=e378]:
+      - generic [ref=e379]:
+        - link "Back to Catalog" [ref=e380] [cursor=pointer]:
+          - /url: /labs
+          - img [ref=e381]
+          - text: Back to Catalog
+        - generic [ref=e383]:
+          - img [ref=e385]
+          - generic [ref=e389]:
+            - generic [ref=e390]:
+              - generic [ref=e391]: Web Security
+              - generic [ref=e392]: beginner
+              - generic [ref=e393]: 4 Training Modules
+            - heading "Web Application Exploitation Lab" [level=1] [ref=e394]
+            - paragraph [ref=e395]: Practice recon, authentication bypass, and input validation attacks against a purpose-built vulnerable web stack.
+        - generic [ref=e396]:
+          - button "Overview" [ref=e397]:
+            - img [ref=e398]
+            - text: Overview
+          - button "Training Modules 4" [ref=e400]:
+            - img [ref=e401]
+            - text: Training Modules
+            - generic [ref=e403]: "4"
+        - generic [ref=e468]:
+          - generic [ref=e469]:
+            - generic [ref=e470]:
+              - generic [ref=e471]: 0/4
+              - generic [ref=e472]: Modules Done
+            - generic [ref=e473]:
+              - generic [ref=e474]: "0"
+              - generic [ref=e475]: XP Earned
+            - generic [ref=e476]:
+              - generic [ref=e477]: "575"
+              - generic [ref=e478]: Total XP
+          - generic [ref=e479]:
+            - generic [ref=e480]:
+              - button "1 Quiz +100 XP HTTP Fundamentals for Pentesters" [ref=e481]:
+                - generic [ref=e482]:
+                  - generic [ref=e483]: "1"
+                  - generic [ref=e484]:
+                    - generic [ref=e485]:
+                      - generic [ref=e486]: Quiz
+                      - generic [ref=e487]: +100 XP
+                    - paragraph [ref=e488]: HTTP Fundamentals for Pentesters
+                  - img [ref=e489]
+              - button "2 Terminal +150 XP Recon with cURL" [ref=e491]:
+                - generic [ref=e492]:
+                  - generic [ref=e493]: "2"
+                  - generic [ref=e494]:
+                    - generic [ref=e495]:
+                      - generic [ref=e496]: Terminal
+                      - generic [ref=e497]: +150 XP
+                    - paragraph [ref=e498]: Recon with cURL
+                  - img [ref=e499]
+              - button "3 CTF Flag +200 XP SQL Injection — Find the Breach" [ref=e501]:
+                - generic [ref=e502]:
+                  - generic [ref=e503]: "3"
+                  - generic [ref=e504]:
+                    - generic [ref=e505]:
+                      - generic [ref=e506]: CTF Flag
+                      - generic [ref=e507]: +200 XP
+                    - paragraph [ref=e508]: SQL Injection — Find the Breach
+                  - img [ref=e509]
+              - button "4 Code Analysis +125 XP Spot the Vulnerability" [ref=e511]:
+                - generic [ref=e512]:
+                  - generic [ref=e513]: "4"
+                  - generic [ref=e514]:
+                    - generic [ref=e515]:
+                      - generic [ref=e516]: Code Analysis
+                      - generic [ref=e517]: +125 XP
+                    - paragraph [ref=e518]: Spot the Vulnerability
+                  - img [ref=e519]
+            - generic [ref=e522]:
+              - generic [ref=e523]:
+                - generic [ref=e527]:
+                  - img [ref=e528]
+                  - generic [ref=e530]: Quiz
+                  - generic [ref=e531]: +100 XP
+                - heading "HTTP Fundamentals for Pentesters" [level=3] [ref=e532]
+                - paragraph [ref=e533]: Test your knowledge of HTTP methods, headers, and status codes used in web pentesting.
+              - generic [ref=e534]:
+                - generic [ref=e535]:
+                  - generic [ref=e536]: Question 1 / 4
+                  - generic [ref=e537]: +100 XP
+                - paragraph [ref=e539]: Which HTTP method is typically exploited in CSRF attacks?
+                - generic [ref=e540]:
+                  - button "A GET" [ref=e541]:
+                    - generic [ref=e542]: A
+                    - text: GET
+                  - button "POST" [active] [ref=e550]:
+                    - img [ref=e551]
+                    - text: POST
+                  - button "C DELETE" [ref=e545]:
+                    - generic [ref=e546]: C
+                    - text: DELETE
+                  - button "D OPTIONS" [ref=e547]:
+                    - generic [ref=e548]: D
+                    - text: OPTIONS
+                - generic [ref=e555]:
+                  - img [ref=e556]
+                  - paragraph [ref=e559]: POST requests carry sensitive state-changing actions (e.g., fund transfers, password changes) without CSRF tokens, making them the primary CSRF target.
+                - button "Next Question" [ref=e560]:
+                  - img
+                  - text: Next Question
+    - contentinfo [ref=e461]:
+      - generic [ref=e462]:
+        - generic [ref=e463]:
+          - img [ref=e464]
+          - generic [ref=e466]: CyberLab Portal v1.0.0
+        - generic [ref=e467]: SECURE CONNECTION ESTABLISHED
+  - region "Notifications (F8)":
+    - list
